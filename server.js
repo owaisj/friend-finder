@@ -12,7 +12,12 @@ app.use(express.static('app/public'))
 //Body Parser
 app.use(bodyParser.json());
 
-//TODO: Import Routes
+//Routers
+const routes = path.join(__dirname, 'app/routes')
+const htmlRouter = require(path.join(routes, 'htmlRoutes.js'));
+const apiRouter = require(path.join(routes, 'apiRoutes.js'));
+app.use('/', htmlRouter);
+app.use('/api', apiRouter);
 
 //Listen for connections
 app.listen(PORT, () => {
