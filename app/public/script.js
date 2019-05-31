@@ -8,6 +8,8 @@ $(document).ready(() => {
             type: $('#type').val()
         }
         
+        if (user.name === '') return alert('Please try again!');
+
         fetch('api/partners', {
             method: 'POST',
             body: JSON.stringify(user),
