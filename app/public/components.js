@@ -1,10 +1,12 @@
 class Header extends React.Component {
     render() {
         return (
-            <div className="jumbotron">
-                <h1>Pok&eacute; Partner Finder</h1>
-                <a onClick={this.props.goHome} className="btn btn-light m-1 text-danger">Home</a>
-                <a onClick={this.props.useSurvey} className="btn btn-light m-1 text-danger">Survey</a>         
+            <div className="jumbotron d-flex flex-column align-items-center bg-danger">
+                <h1 className="text-white">Pok&eacute; Partner Finder</h1>
+                <div className="row">
+                    <a onClick={this.props.goHome} className="btn btn-light m-1 text-danger">Home</a>
+                    <a onClick={this.props.useSurvey} className="btn btn-light m-1 text-danger">Survey</a> 
+                </div>
             </div>
         )
     }
@@ -103,8 +105,11 @@ class Survey extends React.Component {
 class Body extends React.Component {  
     render () {
         const page = this.props.page;
-        if (page) return <Home />
-        return <Survey />
+        let comp = <Home />
+        page ? comp = <Home /> : comp = <Survey />
+        return (
+            <div className="d-flex flex-column align-items-center">{comp}</div>
+        )
     }
 }
 
