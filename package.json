@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "watch": "nodemon server.js",
+    "process": "npx babel --watch app/src --out-dir app/public --presets react-app/prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
