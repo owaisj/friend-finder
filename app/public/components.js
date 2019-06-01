@@ -6,7 +6,7 @@ class Header extends React.Component {
                     <span className="left brand-logo">Pok&eacute; Partner Finder</span>
                     <ul className="right">
                         <li>
-                            <a onClick={this.props.goHome}>Landing</a>
+                            <a onClick={this.props.goHome}>Home</a>
                         </li>
                         <li>
                             <a onClick={this.props.useSurvey}>Survey</a>
@@ -19,21 +19,45 @@ class Header extends React.Component {
 }
 
 class Form extends React.Component {
+    constructor() {
+        super();
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    handleSubmit(event) {
+        event.preventDefault();
+        const data = new FormData(event.target);
+        const user = {
+            name: data.get('name'),
+            type: data.get('type')
+        }
+        console.log(user);
+    }
     render () {
         return (
             <div className="col s6">
-                <form method="POST">
-                <label htmlFor="name">Name: </label>
-                <input type="text" id="name" />
-                <label htmlFor="type">Type: </label>
-                <input type="text" id="type" />
+                <form onSubmit={this.handleSubmit}>
+                    <label htmlFor="name">Name: </label>
+                    <input type="text" id="name" name="name"/>
+                    <label htmlFor="type">Type: </label>
+                    <input type="text" id="type" name="type"/>
+                    
+                    <button className="btn" type="submit" id="submit">
+                        Find your partner
+                    </button>
                 </form>
-                <button className="btn" type="submit" id="submit">
-                    Find your partner
-                </button>
             </div>
         )
     }   
+}
+
+class Display extends React.Component {
+    render() {
+        return (
+            <div className="col s4">
+                Partner Image from POST Request
+            </div>
+        )
+    }
 }
 
 class Home extends React.Component {
@@ -49,7 +73,10 @@ class Home extends React.Component {
 class Survey extends React.Component {
     render() {
         return (
-            <Form />
+            <div>
+                <Form />
+                <Display />
+            </div>
         )
     }
 }
