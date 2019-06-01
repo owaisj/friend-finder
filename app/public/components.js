@@ -1,3 +1,4 @@
+//App Header
 class Header extends React.Component {
     render() {
         return (
@@ -12,6 +13,7 @@ class Header extends React.Component {
     }
 }
 
+//Survey Form
 class Form extends React.Component {
     render () {
         return (
@@ -37,7 +39,7 @@ class Form extends React.Component {
         )
     }   
 }
-
+//Survey Results
 class Display extends React.Component {
     render() {
         if (this.props.poke != '') return (
@@ -53,16 +55,20 @@ class Display extends React.Component {
     }
 }
 
+//Home Page
 class Home extends React.Component {
     render() {
         return (
-            <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem sint modi iusto rem earum cumque nesciunt laborum quae reprehenderit animi? In quisquam saepe mollitia impedit vitae placeat laudantium vero delectus?
-            </p>
+            <div className="m-2 p-2">
+                <p>
+                    Welcome to the Pok&eacute;mon Friend Finder. Click on survey and enter your name and MBTI to find a partner.
+                </p>
+            </div>
         )
     }
 }
 
+//Survey Page
 class Survey extends React.Component {
     constructor() {
         super();
@@ -102,6 +108,7 @@ class Survey extends React.Component {
     }
 }
 
+//Page Body (Can be Home or Survey)
 class Body extends React.Component {  
     render () {
         const page = this.props.page;
