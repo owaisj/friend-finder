@@ -21,7 +21,7 @@ var Header = function (_React$Component) {
         value: function render() {
             return React.createElement(
                 "div",
-                { className: "jumbotron d-flex flex-column align-items-center bg-danger" },
+                { className: "jumbotron d-flex flex-column align-items-center bg-danger my-3" },
                 React.createElement(
                     "h1",
                     { className: "text-white" },
@@ -122,14 +122,13 @@ var Display = function (_React$Component3) {
         value: function render() {
             if (this.props.poke != '') return React.createElement(
                 "div",
-                { className: "col" },
+                { className: "col mb-3" },
                 "Your partner is ",
                 this.props.poke
             );
-            return React.createElement(
-                "div",
-                { className: "col" },
-                "Partner Image from POST Request"
+            return (
+                //TODO: Modal
+                React.createElement("div", { className: "col" })
             );
         }
     }]);
@@ -292,7 +291,7 @@ var App = function (_React$Component7) {
             var isHome = this.state.isHome;
             return React.createElement(
                 "div",
-                { className: "container" },
+                { className: "container border my-2" },
                 React.createElement(Header, {
                     goHome: this.goHome,
                     useSurvey: this.useSurvey

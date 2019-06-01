@@ -2,7 +2,7 @@
 class Header extends React.Component {
     render() {
         return (
-            <div className="jumbotron d-flex flex-column align-items-center bg-danger">
+            <div className="jumbotron d-flex flex-column align-items-center bg-danger my-3">
                 <h1 className="text-white">Pok&eacute; Partner Finder</h1>
                 <div className="row">
                     <a onClick={this.props.goHome} className="btn btn-light m-1 text-danger">Home</a>
@@ -43,14 +43,13 @@ class Form extends React.Component {
 class Display extends React.Component {
     render() {
         if (this.props.poke != '') return (
-            <div className="col">
+            <div className="col mb-3">
                 Your partner is {this.props.poke}
             </div>
         )
         return (
-            <div className="col">
-                Partner Image from POST Request
-            </div>
+            //TODO: Modal
+            <div className="col"></div>
         )
     }
 }
@@ -142,7 +141,7 @@ class App extends React.Component{
     render () {
         let isHome = this.state.isHome;
         return (
-            <div className="container">
+            <div className="container border my-2">
                 <Header 
                     goHome={this.goHome}
                     useSurvey={this.useSurvey}
