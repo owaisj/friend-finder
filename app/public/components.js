@@ -3,14 +3,16 @@ class Header extends React.Component {
         return (
             <div>
                 <nav>
-                    Pok&eacute; Partner Finder | <a href="/">Landing</a> | <a href="/survey">Survey</a>
+                    Pok&eacute; Partner Finder |
+                    <a onClick={this.props.goHome}> Landing</a> |
+                    <a onClick={this.props.useSurvey}> Survey</a>
                 </nav>
             </div>
         )
     }
 }
 
-class Page extends React.Component {
+class Home extends React.Component {
     render() {
         return (
             <p>
@@ -20,12 +22,60 @@ class Page extends React.Component {
     }
 }
 
-class App extends React.Component{
-    render () {
+class Survey extends React.Component {
+    render() {
         return (
-            <div>
-                <Header />
-                <Page />
+            <div className="col s6">
+                <form method="POST">
+                <label htmlFor="name">Name: </label>
+                <input type="text" id="name" />
+                <label htmlFor="type">Type: </label>
+                <input type="text" id="type" />
+                </form>
+                <button type="submit" id="submit">
+                    Find your partner
+                </button>
+            </div>
+        )
+    }
+}
+
+class Body extends React.Component {  
+    render () {
+        const page = this.props.page;
+        if (page) return <Home />
+        return <Survey />
+    }
+}
+
+class App extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            isHome: true
+        }
+        this.goHome = this.goHome.bind(this);
+        this.useSurvey = this.useSurvey.bind(this);
+    }
+    goHome () {
+        this.setState({
+            isHome: true
+        })
+    }
+    useSurvey () {
+        this.setState({
+            isHome: false
+        })
+    }
+    render () {
+        let isHome = this.state.isHome;
+        return (
+            <div className="row">
+                <Header 
+                    goHome={this.goHome}
+                    useSurvey={this.useSurvey}
+                />
+                <Body page={isHome}/>
             </div>
         )
     }
