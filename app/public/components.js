@@ -11,31 +11,10 @@ class Header extends React.Component {
 }
 
 class Form extends React.Component {
-    constructor() {
-        super();
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-    handleSubmit(event) {
-        event.preventDefault();
-        const data = new FormData(event.target);
-        const user = {
-            name: data.get('name'),
-            type: data.get('type')
-        }
-        if (user.name === '' || user.type === '') return alert('Please try again!');
-        console.log(user);
-        fetch('api/partners', {
-            method: 'POST',
-            body: JSON.stringify(user),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(response => response.json()).then(match => alert(match.name));
-    }
     render () {
         return (
             <div className="col d-flex flex-column">
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.props.onFormSubmit}>
                     <div className="p-1">
                         <label htmlFor="name" className="m-1">Name: </label>
                         <input type="text" id="name" name="name"/>
@@ -59,8 +38,13 @@ class Form extends React.Component {
 
 class Display extends React.Component {
     render() {
+        if (this.props.poke != '') return (
+            <div className="col">
+                Your partner is {this.props.poke}
+            </div>
+        )
         return (
-            <div className="col s4">
+            <div className="col">
                 Partner Image from POST Request
             </div>
         )
@@ -78,11 +62,39 @@ class Home extends React.Component {
 }
 
 class Survey extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            partner: ''
+        }
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    handleSubmit(event) {
+        event.preventDefault();
+        const data = new FormData(event.target);
+        const user = {
+            name: data.get('name'),
+            type: data.get('type')
+        }
+        if (user.name === '' || user.type === '') return alert('Please try again!');
+        console.log(user);
+        fetch('api/partners', {
+            method: 'POST',
+            body: JSON.stringify(user),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => response.json()).then(match => {
+            this.setState({
+                partner: match.name
+            })
+        });
+    }
     render() {
         return (
             <div>
-                <Form />
-                <Display />
+                <Form onFormSubmit={this.handleSubmit}/>
+                <Display poke={this.state.partner}/>
             </div>
         )
     }
