@@ -195,6 +195,7 @@ var Survey = function (_React$Component5) {
                 name: data.get('name'),
                 type: data.get('type')
             };
+            event.target.reset();
             if (user.name === '' || user.type === '') return alert('Please try again!');
             console.log(user);
             fetch('api/partners', {
