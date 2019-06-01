@@ -22,7 +22,15 @@ class Form extends React.Component {
             name: data.get('name'),
             type: data.get('type')
         }
+        if (user.name || user.type === '') return alert('Please try again!');
         console.log(user);
+        fetch('api/partners', {
+            method: 'POST',
+            body: JSON.stringify(user),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => response.json()).then(match => alert(match.name));
     }
     render () {
         return (
