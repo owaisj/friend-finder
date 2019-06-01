@@ -291,7 +291,7 @@ var App = function (_React$Component7) {
             var isHome = this.state.isHome;
             return React.createElement(
                 "div",
-                { className: "container border my-2" },
+                { className: "container border bg-light shadow-lg my-2" },
                 React.createElement(Header, {
                     goHome: this.goHome,
                     useSurvey: this.useSurvey

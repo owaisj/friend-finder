@@ -141,7 +141,7 @@ class App extends React.Component{
     render () {
         let isHome = this.state.isHome;
         return (
-            <div className="container border my-2">
+            <div className="container border bg-light shadow-lg my-2">
                 <Header 
                     goHome={this.goHome}
                     useSurvey={this.useSurvey}
