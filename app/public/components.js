@@ -1,18 +1,10 @@
 class Header extends React.Component {
     render() {
         return (
-            <div>
-                <nav>
-                    <span className="left brand-logo">Pok&eacute; Partner Finder</span>
-                    <ul className="right">
-                        <li>
-                            <a onClick={this.props.goHome}>Home</a>
-                        </li>
-                        <li>
-                            <a onClick={this.props.useSurvey}>Survey</a>
-                        </li>
-                    </ul>
-                </nav>
+            <div className="jumbotron">
+                <h1>Pok&eacute; Partner Finder</h1>
+                <a onClick={this.props.goHome} className="btn btn-light m-1 text-danger">Home</a>
+                <a onClick={this.props.useSurvey} className="btn btn-light m-1 text-danger">Survey</a>         
             </div>
         )
     }
@@ -34,16 +26,23 @@ class Form extends React.Component {
     }
     render () {
         return (
-            <div className="col s6">
+            <div className="col d-flex flex-column">
                 <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="name">Name: </label>
-                    <input type="text" id="name" name="name"/>
-                    <label htmlFor="type">Type: </label>
-                    <input type="text" id="type" name="type"/>
+                    <div className="p-1">
+                        <label htmlFor="name" className="m-1">Name: </label>
+                        <input type="text" id="name" name="name"/>
+                    </div>
+
+                    <div className="p-1">
+                        <label htmlFor="type" className="m-1">Type: </label>
+                        <input type="text" id="type" name="type"/>
+                    </div>
                     
-                    <button className="btn" type="submit" id="submit">
-                        Find your partner
-                    </button>
+                    <div className="p-1">
+                        <button className="btn btn-danger text-white m-1" type="submit" id="submit">
+                            Find your partner
+                        </button>
+                    </div>
                 </form>
             </div>
         )
@@ -111,7 +110,7 @@ class App extends React.Component{
     render () {
         let isHome = this.state.isHome;
         return (
-            <div className="row">
+            <div className="container">
                 <Header 
                     goHome={this.goHome}
                     useSurvey={this.useSurvey}
