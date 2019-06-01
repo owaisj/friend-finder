@@ -3,13 +3,37 @@ class Header extends React.Component {
         return (
             <div>
                 <nav>
-                    Pok&eacute; Partner Finder |
-                    <a onClick={this.props.goHome}> Landing</a> |
-                    <a onClick={this.props.useSurvey}> Survey</a>
+                    <span className="left brand-logo">Pok&eacute; Partner Finder</span>
+                    <ul className="right">
+                        <li>
+                            <a onClick={this.props.goHome}>Landing</a>
+                        </li>
+                        <li>
+                            <a onClick={this.props.useSurvey}>Survey</a>
+                        </li>
+                    </ul>
                 </nav>
             </div>
         )
     }
+}
+
+class Form extends React.Component {
+    render () {
+        return (
+            <div className="col s6">
+                <form method="POST">
+                <label htmlFor="name">Name: </label>
+                <input type="text" id="name" />
+                <label htmlFor="type">Type: </label>
+                <input type="text" id="type" />
+                </form>
+                <button className="btn" type="submit" id="submit">
+                    Find your partner
+                </button>
+            </div>
+        )
+    }   
 }
 
 class Home extends React.Component {
@@ -25,17 +49,7 @@ class Home extends React.Component {
 class Survey extends React.Component {
     render() {
         return (
-            <div className="col s6">
-                <form method="POST">
-                <label htmlFor="name">Name: </label>
-                <input type="text" id="name" />
-                <label htmlFor="type">Type: </label>
-                <input type="text" id="type" />
-                </form>
-                <button type="submit" id="submit">
-                    Find your partner
-                </button>
-            </div>
+            <Form />
         )
     }
 }
