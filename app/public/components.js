@@ -118,18 +118,29 @@ var Display = function (_React$Component3) {
     }
 
     _createClass(Display, [{
+        key: "componentDidUpdate",
+        value: function componentDidUpdate(prevProps) {
+            var pokemon = this.props.poke;
+            if (pokemon !== prevProps.poke) {
+                pokemon = pokemon.toLowerCase();
+                this.props.getUrl(pokemon);
+            }
+        }
+    }, {
         key: "render",
         value: function render() {
+            if (this.props.image != '') return React.createElement(
+                "div",
+                { className: "col d-flex flex-column align-items-center" },
+                React.createElement("img", { src: this.props.image })
+            );
             if (this.props.poke != '') return React.createElement(
                 "div",
                 { className: "col mb-3" },
                 "Your partner is ",
                 this.props.poke
             );
-            return (
-                //TODO: Modal
-                React.createElement("div", { className: "col" })
-            );
+            return React.createElement("div", { className: "col" });
         }
     }]);
 
@@ -178,9 +189,11 @@ var Survey = function (_React$Component5) {
         var _this5 = _possibleConstructorReturn(this, (Survey.__proto__ || Object.getPrototypeOf(Survey)).call(this));
 
         _this5.state = {
-            partner: ''
+            partner: '',
+            url: ''
         };
         _this5.handleSubmit = _this5.handleSubmit.bind(_this5);
+        _this5.fetchImage = _this5.fetchImage.bind(_this5);
         return _this5;
     }
 
@@ -213,13 +226,30 @@ var Survey = function (_React$Component5) {
             });
         }
     }, {
+        key: "fetchImage",
+        value: function fetchImage(input) {
+            var _this7 = this;
+
+            fetch("https://pokeapi.co/api/v2/pokemon/" + input + "/").then(function (response) {
+                return response.json();
+            }).then(function (pokemon) {
+                console.log(pokemon);
+                _this7.setState({
+                    url: pokemon.sprites.front_default
+                });
+            });
+        }
+    }, {
         key: "render",
         value: function render() {
             return React.createElement(
                 "div",
                 null,
                 React.createElement(Form, { onFormSubmit: this.handleSubmit }),
-                React.createElement(Display, { poke: this.state.partner })
+                React.createElement(Display, { poke: this.state.partner,
+                    image: this.state.url,
+                    getUrl: this.fetchImage
+                })
             );
         }
     }]);
@@ -262,14 +292,14 @@ var App = function (_React$Component7) {
     function App(props) {
         _classCallCheck(this, App);
 
-        var _this8 = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+        var _this9 = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
-        _this8.state = {
+        _this9.state = {
             isHome: true
         };
-        _this8.goHome = _this8.goHome.bind(_this8);
-        _this8.useSurvey = _this8.useSurvey.bind(_this8);
-        return _this8;
+        _this9.goHome = _this9.goHome.bind(_this9);
+        _this9.useSurvey = _this9.useSurvey.bind(_this9);
+        return _this9;
     }
 
     _createClass(App, [{

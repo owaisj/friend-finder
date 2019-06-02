@@ -41,14 +41,25 @@ class Form extends React.Component {
 }
 //Survey Results
 class Display extends React.Component {
+    componentDidUpdate(prevProps) {
+        let pokemon = this.props.poke;
+        if (pokemon !== prevProps.poke) {
+            pokemon = pokemon.toLowerCase();
+            this.props.getUrl(pokemon);
+        }
+    }
     render() {
+        if (this.props.image != '') return (
+            <div className="col d-flex flex-column align-items-center">
+                <img src={this.props.image} />
+            </div>
+        )
         if (this.props.poke != '') return (
             <div className="col mb-3">
                 Your partner is {this.props.poke}
             </div>
         )
         return (
-            //TODO: Modal
             <div className="col"></div>
         )
     }
@@ -72,9 +83,11 @@ class Survey extends React.Component {
     constructor() {
         super();
         this.state = {
-            partner: ''
+            partner: '',
+            url: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.fetchImage = this.fetchImage.bind(this);
     }
     handleSubmit(event) {
         event.preventDefault();
@@ -98,11 +111,23 @@ class Survey extends React.Component {
             })
         });
     }
+    fetchImage (input) {
+        fetch(`https://pokeapi.co/api/v2/pokemon/${input}/`)	
+        .then(response => response.json()).then(pokemon => {	
+            console.log(pokemon);	
+            this.setState({
+                url: pokemon.sprites.front_default
+            })
+        });
+    }
     render() {
         return (
             <div>
                 <Form onFormSubmit={this.handleSubmit}/>
-                <Display poke={this.state.partner}/>
+                <Display poke={this.state.partner}
+                    image={this.state.url}
+                    getUrl ={this.fetchImage}
+                />
             </div>
         )
     }
