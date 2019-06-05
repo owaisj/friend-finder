@@ -257,7 +257,7 @@ var Survey = function (_React$Component5) {
             var data = new FormData(event.target);
             var user = {
                 name: data.get('name'),
-                type: data.get('type')
+                type: data.get('type').trim().toUpperCase()
             };
             event.target.reset();
             if (user.name === '' || user.type === '') return alert('Please try again!');

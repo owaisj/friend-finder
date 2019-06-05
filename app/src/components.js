@@ -119,7 +119,7 @@ class Survey extends React.Component {
         const data = new FormData(event.target);
         const user = {
             name: data.get('name'),
-            type: data.get('type')
+            type: data.get('type').trim().toUpperCase()
         }
         event.target.reset();
         if (user.name === '' || user.type === '') return alert('Please try again!');
