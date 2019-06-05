@@ -56,11 +56,11 @@ class Display extends React.Component {
                     View Results
                 </button>
 
-                <div className="modal fade" id="resultsModal" tabindex="-1" role="dialog" aria-labelledby="resultsModalLabel" aria-hidden="true">
+                <div className="modal fade" id="resultsModal" tabIndex="-1" role="dialog" aria-labelledby="resultsModalLabel" aria-hidden="true">
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="resultsModalLabel">Your Pok&eacute;mon Partner</h5>
+                            <h5 className="modal-title" id="resultsModalLabel">Your Pok&eacute;mon Partner is {this.props.poke}</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -69,7 +69,7 @@ class Display extends React.Component {
                             <img src={this.props.image} />
                         </div>
                         <div className="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                         </div>
                     </div>

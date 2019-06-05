@@ -139,7 +139,7 @@ var Display = function (_React$Component3) {
                 ),
                 React.createElement(
                     "div",
-                    { className: "modal fade", id: "resultsModal", tabindex: "-1", role: "dialog", "aria-labelledby": "resultsModalLabel", "aria-hidden": "true" },
+                    { className: "modal fade", id: "resultsModal", tabIndex: "-1", role: "dialog", "aria-labelledby": "resultsModalLabel", "aria-hidden": "true" },
                     React.createElement(
                         "div",
                         { className: "modal-dialog", role: "document" },
@@ -152,7 +152,8 @@ var Display = function (_React$Component3) {
                                 React.createElement(
                                     "h5",
                                     { className: "modal-title", id: "resultsModalLabel" },
-                                    "Your Pok\xE9mon Partner"
+                                    "Your Pok\xE9mon Partner is ",
+                                    this.props.poke
                                 ),
                                 React.createElement(
                                     "button",
@@ -174,7 +175,7 @@ var Display = function (_React$Component3) {
                                 { className: "modal-footer" },
                                 React.createElement(
                                     "button",
-                                    { type: "button", "class": "btn btn-secondary", "data-dismiss": "modal" },
+                                    { type: "button", className: "btn btn-secondary", "data-dismiss": "modal" },
                                     "Close"
                                 )
                             )
