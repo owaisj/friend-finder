@@ -30,10 +30,13 @@ router.post('/partners', function(request, response){
    for (let pokemon in partners) {
         if (partners[pokemon]['type'] === request.body.type) {
             match = partners[pokemon];
-            break;
+            console.log(match);
+            return response.json(match);
         }
    }
-   response.json(match);
+   return response.json({
+       name: 'Unown'
+   })
 })
 
 module.exports = router;
