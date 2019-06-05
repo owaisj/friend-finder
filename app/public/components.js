@@ -132,13 +132,64 @@ var Display = function (_React$Component3) {
             if (this.props.image != '') return React.createElement(
                 "div",
                 { className: "col d-flex flex-column align-items-center" },
-                React.createElement("img", { src: this.props.image })
+                React.createElement(
+                    "button",
+                    { type: "button", className: "btn btn-primary m-1", "data-toggle": "modal", "data-target": "#resultsModal" },
+                    "View Results"
+                ),
+                React.createElement(
+                    "div",
+                    { className: "modal fade", id: "resultsModal", tabindex: "-1", role: "dialog", "aria-labelledby": "resultsModalLabel", "aria-hidden": "true" },
+                    React.createElement(
+                        "div",
+                        { className: "modal-dialog", role: "document" },
+                        React.createElement(
+                            "div",
+                            { className: "modal-content" },
+                            React.createElement(
+                                "div",
+                                { className: "modal-header" },
+                                React.createElement(
+                                    "h5",
+                                    { className: "modal-title", id: "resultsModalLabel" },
+                                    "Your Pok\xE9mon Partner"
+                                ),
+                                React.createElement(
+                                    "button",
+                                    { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" },
+                                    React.createElement(
+                                        "span",
+                                        { "aria-hidden": "true" },
+                                        "\xD7"
+                                    )
+                                )
+                            ),
+                            React.createElement(
+                                "div",
+                                { className: "modal-body" },
+                                React.createElement("img", { src: this.props.image })
+                            ),
+                            React.createElement(
+                                "div",
+                                { className: "modal-footer" },
+                                React.createElement(
+                                    "button",
+                                    { type: "button", "class": "btn btn-secondary", "data-dismiss": "modal" },
+                                    "Close"
+                                )
+                            )
+                        )
+                    )
+                )
             );
-            if (this.props.poke != '') return React.createElement(
-                "div",
-                { className: "col mb-3" },
-                "Your partner is ",
-                this.props.poke
+            if (this.props.poke != '') return (
+                //Loading placeholder
+                React.createElement(
+                    "div",
+                    { className: "col mb-3" },
+                    "Your partner is ",
+                    this.props.poke
+                )
             );
             return React.createElement("div", { className: "col" });
         }

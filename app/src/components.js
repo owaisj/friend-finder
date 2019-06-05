@@ -51,10 +51,35 @@ class Display extends React.Component {
     render() {
         if (this.props.image != '') return (
             <div className="col d-flex flex-column align-items-center">
-                <img src={this.props.image} />
+
+                <button type="button" className="btn btn-primary m-1" data-toggle="modal" data-target="#resultsModal">
+                    View Results
+                </button>
+
+                <div className="modal fade" id="resultsModal" tabindex="-1" role="dialog" aria-labelledby="resultsModalLabel" aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="resultsModalLabel">Your Pok&eacute;mon Partner</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <img src={this.props.image} />
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
         )
         if (this.props.poke != '') return (
+            //Loading placeholder
             <div className="col mb-3">
                 Your partner is {this.props.poke}
             </div>
