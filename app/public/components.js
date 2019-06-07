@@ -217,7 +217,7 @@ var Form = function (_React$Component3) {
 
     return Form;
 }(React.Component);
-//Survey Results
+//Survey Results (Modal)
 
 
 var Display = function (_React$Component4) {
@@ -234,6 +234,7 @@ var Display = function (_React$Component4) {
         value: function componentDidUpdate(prevProps) {
             var pokemon = this.props.poke;
             if (pokemon !== prevProps.poke) {
+                alert('Results Updated!');
                 pokemon = pokemon.toLowerCase();
                 this.props.getUrl(pokemon);
             }

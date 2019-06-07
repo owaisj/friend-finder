@@ -89,11 +89,12 @@ class Form extends React.Component {
         )
     }   
 }
-//Survey Results
+//Survey Results (Modal)
 class Display extends React.Component {
     componentDidUpdate(prevProps) {
         let pokemon = this.props.poke;
         if (pokemon !== prevProps.poke) {
+            alert('Results Updated!')
             pokemon = pokemon.toLowerCase();
             this.props.getUrl(pokemon);
         }
