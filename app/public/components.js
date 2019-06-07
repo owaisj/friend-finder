@@ -84,7 +84,7 @@ var Form = function (_React$Component2) {
                         { className: "p-1 d-flex flex-column" },
                         React.createElement(
                             "div",
-                            { className: "d-flex" },
+                            { className: "d-flex justify-content-between m-1" },
                             React.createElement(
                                 "label",
                                 { htmlFor: "pairOne", className: "m-1" },
@@ -107,7 +107,7 @@ var Form = function (_React$Component2) {
                         ),
                         React.createElement(
                             "div",
-                            { className: "d-flex" },
+                            { className: "d-flex justify-content-between m-1" },
                             React.createElement(
                                 "label",
                                 { htmlFor: "pairTwo", className: "m-1" },
@@ -130,7 +130,7 @@ var Form = function (_React$Component2) {
                         ),
                         React.createElement(
                             "div",
-                            { className: "d-flex" },
+                            { className: "d-flex justify-content-between m-1" },
                             React.createElement(
                                 "label",
                                 { htmlFor: "pairThree", className: "m-1" },
@@ -153,7 +153,7 @@ var Form = function (_React$Component2) {
                         ),
                         React.createElement(
                             "div",
-                            { className: "d-flex" },
+                            { className: "d-flex justify-content-between m-1" },
                             React.createElement(
                                 "label",
                                 { htmlFor: "pairFour", className: "m-1" },
@@ -343,7 +343,6 @@ var Survey = function (_React$Component5) {
             event.preventDefault();
             var data = new FormData(event.target);
             var type = data.get('pairOne') + data.get('pairTwo') + data.get('pairThree') + data.get('pairFour');
-            console.log(type);
             var user = {
                 name: data.get('name'),
                 type: type

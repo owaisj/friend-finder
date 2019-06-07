@@ -26,7 +26,7 @@ class Form extends React.Component {
 
                     <div className="p-1 d-flex flex-column">
                         
-                        <div className="d-flex">
+                        <div className="d-flex justify-content-between m-1">
                             <label htmlFor="pairOne" className="m-1">
                                 Are you introverted or extroverted?
                             </label>
@@ -36,7 +36,7 @@ class Form extends React.Component {
                             </select>
                         </div>
                         
-                        <div className="d-flex">
+                        <div className="d-flex justify-content-between m-1">
                         <label htmlFor="pairTwo" className="m-1">
                             Do you pay attention to information from your senses (Sensing) or to patterns and possibilities (Intuition)?
                         </label>
@@ -46,7 +46,7 @@ class Form extends React.Component {
                         </select>
                         </div>
 
-                        <div className="d-flex">
+                        <div className="d-flex justify-content-between m-1">
                             <label htmlFor="pairThree" className="m-1">
                                 Are you a thinker or a feeler?
                             </label>
@@ -56,7 +56,7 @@ class Form extends React.Component {
                             </select>
                         </div>
 
-                        <div className="d-flex">
+                        <div className="d-flex justify-content-between m-1">
                         <label htmlFor="pairFour" className="m-1">
                             Are you flexible and adaptable (Perceiving) or structured and decided (Judging)?
                         </label>
@@ -156,7 +156,6 @@ class Survey extends React.Component {
         event.preventDefault();
         const data = new FormData(event.target);
         const type = data.get('pairOne') + data.get('pairTwo') + data.get('pairThree') + data.get('pairFour')
-        console.log(type)
         const user = {
             name: data.get('name'),
             type: type
