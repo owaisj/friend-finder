@@ -13,6 +13,17 @@ class Header extends React.Component {
     }
 }
 
+//App Footer
+class Footer extends React.Component {
+    render() {
+        return(
+            <a className="btn btn-light text-danger mb-3" href="/api/partners" target="_blank">
+                View API
+            </a>
+        )
+    }
+}
+
 //Survey Form
 class Form extends React.Component {
     render () {
@@ -230,12 +241,16 @@ class App extends React.Component{
     render () {
         let isHome = this.state.isHome;
         return (
-            <div className="container border bg-light shadow-lg my-2">
-                <Header 
-                    goHome={this.goHome}
-                    useSurvey={this.useSurvey}
-                />
-                <Body page={isHome}/>
+            <div className="d-flex flex-column align-items-center">
+                <div className="container border bg-light shadow-lg my-2">
+                    <Header 
+                        goHome={this.goHome}
+                        useSurvey={this.useSurvey}
+                    />
+                    <Body page={isHome}/>
+                    
+                </div>
+                <Footer />
             </div>
         )
     }

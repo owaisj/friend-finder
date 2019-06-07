@@ -48,11 +48,37 @@ var Header = function (_React$Component) {
     return Header;
 }(React.Component);
 
+//App Footer
+
+
+var Footer = function (_React$Component2) {
+    _inherits(Footer, _React$Component2);
+
+    function Footer() {
+        _classCallCheck(this, Footer);
+
+        return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).apply(this, arguments));
+    }
+
+    _createClass(Footer, [{
+        key: "render",
+        value: function render() {
+            return React.createElement(
+                "a",
+                { className: "btn btn-light text-danger mb-3", href: "/api/partners", target: "_blank" },
+                "View API"
+            );
+        }
+    }]);
+
+    return Footer;
+}(React.Component);
+
 //Survey Form
 
 
-var Form = function (_React$Component2) {
-    _inherits(Form, _React$Component2);
+var Form = function (_React$Component3) {
+    _inherits(Form, _React$Component3);
 
     function Form() {
         _classCallCheck(this, Form);
@@ -194,8 +220,8 @@ var Form = function (_React$Component2) {
 //Survey Results
 
 
-var Display = function (_React$Component3) {
-    _inherits(Display, _React$Component3);
+var Display = function (_React$Component4) {
+    _inherits(Display, _React$Component4);
 
     function Display() {
         _classCallCheck(this, Display);
@@ -288,8 +314,8 @@ var Display = function (_React$Component3) {
 //Home Page
 
 
-var Home = function (_React$Component4) {
-    _inherits(Home, _React$Component4);
+var Home = function (_React$Component5) {
+    _inherits(Home, _React$Component5);
 
     function Home() {
         _classCallCheck(this, Home);
@@ -318,27 +344,27 @@ var Home = function (_React$Component4) {
 //Survey Page
 
 
-var Survey = function (_React$Component5) {
-    _inherits(Survey, _React$Component5);
+var Survey = function (_React$Component6) {
+    _inherits(Survey, _React$Component6);
 
     function Survey() {
         _classCallCheck(this, Survey);
 
-        var _this5 = _possibleConstructorReturn(this, (Survey.__proto__ || Object.getPrototypeOf(Survey)).call(this));
+        var _this6 = _possibleConstructorReturn(this, (Survey.__proto__ || Object.getPrototypeOf(Survey)).call(this));
 
-        _this5.state = {
+        _this6.state = {
             partner: '',
             url: ''
         };
-        _this5.handleSubmit = _this5.handleSubmit.bind(_this5);
-        _this5.fetchImage = _this5.fetchImage.bind(_this5);
-        return _this5;
+        _this6.handleSubmit = _this6.handleSubmit.bind(_this6);
+        _this6.fetchImage = _this6.fetchImage.bind(_this6);
+        return _this6;
     }
 
     _createClass(Survey, [{
         key: "handleSubmit",
         value: function handleSubmit(event) {
-            var _this6 = this;
+            var _this7 = this;
 
             event.preventDefault();
             var data = new FormData(event.target);
@@ -358,7 +384,7 @@ var Survey = function (_React$Component5) {
             }).then(function (response) {
                 return response.json();
             }).then(function (match) {
-                _this6.setState({
+                _this7.setState({
                     partner: match.name
                 });
             });
@@ -366,13 +392,13 @@ var Survey = function (_React$Component5) {
     }, {
         key: "fetchImage",
         value: function fetchImage(input) {
-            var _this7 = this;
+            var _this8 = this;
 
             fetch("https://pokeapi.co/api/v2/pokemon/" + input + "/").then(function (response) {
                 return response.json();
             }).then(function (pokemon) {
                 console.log(pokemon);
-                _this7.setState({
+                _this8.setState({
                     url: pokemon.sprites.front_default
                 });
             });
@@ -398,8 +424,8 @@ var Survey = function (_React$Component5) {
 //Page Body (Can be Home or Survey)
 
 
-var Body = function (_React$Component6) {
-    _inherits(Body, _React$Component6);
+var Body = function (_React$Component7) {
+    _inherits(Body, _React$Component7);
 
     function Body() {
         _classCallCheck(this, Body);
@@ -424,20 +450,20 @@ var Body = function (_React$Component6) {
     return Body;
 }(React.Component);
 
-var App = function (_React$Component7) {
-    _inherits(App, _React$Component7);
+var App = function (_React$Component8) {
+    _inherits(App, _React$Component8);
 
     function App(props) {
         _classCallCheck(this, App);
 
-        var _this9 = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+        var _this10 = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
-        _this9.state = {
+        _this10.state = {
             isHome: true
         };
-        _this9.goHome = _this9.goHome.bind(_this9);
-        _this9.useSurvey = _this9.useSurvey.bind(_this9);
-        return _this9;
+        _this10.goHome = _this10.goHome.bind(_this10);
+        _this10.useSurvey = _this10.useSurvey.bind(_this10);
+        return _this10;
     }
 
     _createClass(App, [{
@@ -460,12 +486,17 @@ var App = function (_React$Component7) {
             var isHome = this.state.isHome;
             return React.createElement(
                 "div",
-                { className: "container border bg-light shadow-lg my-2" },
-                React.createElement(Header, {
-                    goHome: this.goHome,
-                    useSurvey: this.useSurvey
-                }),
-                React.createElement(Body, { page: isHome })
+                { className: "d-flex flex-column align-items-center" },
+                React.createElement(
+                    "div",
+                    { className: "container border bg-light shadow-lg my-2" },
+                    React.createElement(Header, {
+                        goHome: this.goHome,
+                        useSurvey: this.useSurvey
+                    }),
+                    React.createElement(Body, { page: isHome })
+                ),
+                React.createElement(Footer, null)
             );
         }
     }]);
