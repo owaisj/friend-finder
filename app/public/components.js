@@ -217,7 +217,7 @@ var Form = function (_React$Component3) {
 
     return Form;
 }(React.Component);
-//Survey Results
+//Survey Results (Modal)
 
 
 var Display = function (_React$Component4) {
@@ -375,6 +375,7 @@ var Survey = function (_React$Component6) {
             };
             event.target.reset();
             if (user.name === '') return alert('Please enter your name!');
+            alert('Results Updated!');
             fetch('api/partners', {
                 method: 'POST',
                 body: JSON.stringify(user),

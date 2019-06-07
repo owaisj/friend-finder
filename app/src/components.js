@@ -89,7 +89,7 @@ class Form extends React.Component {
         )
     }   
 }
-//Survey Results
+//Survey Results (Modal)
 class Display extends React.Component {
     componentDidUpdate(prevProps) {
         let pokemon = this.props.poke;
@@ -173,6 +173,7 @@ class Survey extends React.Component {
         }
         event.target.reset();
         if (user.name === '') return alert('Please enter your name!');
+        alert('Results Updated!')
         fetch('api/partners', {
             method: 'POST',
             body: JSON.stringify(user),
