@@ -24,9 +24,48 @@ class Form extends React.Component {
                         <input type="text" id="name" name="name"/>
                     </div>
 
-                    <div className="p-1">
-                        <label htmlFor="type" className="m-1">Type: </label>
-                        <input type="text" id="type" name="type"/>
+                    <div className="p-1 d-flex flex-column">
+                        
+                        <div className="d-flex">
+                            <label htmlFor="pairOne" className="m-1">
+                                Are you introverted or extroverted?
+                            </label>
+                            <select name="pairOne">
+                                <option value="I">Introverted</option>
+                                <option value="E">Extroverted</option>
+                            </select>
+                        </div>
+                        
+                        <div className="d-flex">
+                        <label htmlFor="pairTwo" className="m-1">
+                            Do you pay attention to information from your senses (Sensing) or to patterns and possibilities (Intuition)?
+                        </label>
+                        <select name="pairTwo">
+                            <option value="S">Sensing</option>
+                            <option value="N">Intuition</option>
+                        </select>
+                        </div>
+
+                        <div className="d-flex">
+                            <label htmlFor="pairThree" className="m-1">
+                                Are you a thinker or a feeler?
+                            </label>
+                            <select name="pairThree">
+                                <option value="T">Thinker</option>
+                                <option value="F">Feeling</option>
+                            </select>
+                        </div>
+
+                        <div className="d-flex">
+                        <label htmlFor="pairFour" className="m-1">
+                            Are you flexible and adaptable (Perceiving) or structured and decided (Judging)?
+                        </label>
+                        <select name="pairFour">
+                            <option value="P">Perceiving</option>
+                            <option value="J">Judging</option>
+                        </select>
+                        </div>
+
                     </div>
                     
                     <div className="p-1">
@@ -51,8 +90,7 @@ class Display extends React.Component {
     render() {
         if (this.props.image != '') return (
             <div className="col d-flex flex-column align-items-center">
-
-                <button type="button" className="btn btn-primary m-1" data-toggle="modal" data-target="#resultsModal">
+                <button type="button" className="btn btn-success m-1 mb-4" data-toggle="modal" data-target="#resultsModal">
                     View Results
                 </button>
 
@@ -117,13 +155,14 @@ class Survey extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         const data = new FormData(event.target);
+        const type = data.get('pairOne') + data.get('pairTwo') + data.get('pairThree') + data.get('pairFour')
+        console.log(type)
         const user = {
             name: data.get('name'),
-            type: data.get('type').trim().toUpperCase()
+            type: type
         }
         event.target.reset();
-        if (user.name === '' || user.type === '') return alert('Please try again!');
-        console.log(user);
+        if (user.name === '') return alert('Please enter your name!');
         fetch('api/partners', {
             method: 'POST',
             body: JSON.stringify(user),
