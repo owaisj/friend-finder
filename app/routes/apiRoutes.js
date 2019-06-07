@@ -23,17 +23,20 @@ router.get('/partners/:type', (request, response) => {
     response.json(match);
 })
 
-//TODO: POST route to handle incoming survey results (form)
+//POST route to handle incoming survey results (form)
 router.post('/partners', function(request, response){
    console.log('User sent the MBTI of', request.body.type);
    let match = '';
    for (let pokemon in partners) {
         if (partners[pokemon]['type'] === request.body.type) {
             match = partners[pokemon];
-            break;
+            console.log(match);
+            return response.json(match);
         }
    }
-   response.json(match);
+   return response.json({
+       name: 'Unown'
+   })
 })
 
 module.exports = router;
