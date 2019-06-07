@@ -23,7 +23,7 @@ router.get('/partners/:type', (request, response) => {
     response.json(match);
 })
 
-//TODO: POST route to handle incoming survey results (form)
+//POST route to handle incoming survey results (form)
 router.post('/partners', function(request, response){
    console.log('User sent the MBTI of', request.body.type);
    let match = '';
