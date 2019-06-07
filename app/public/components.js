@@ -397,7 +397,6 @@ var Survey = function (_React$Component6) {
             fetch("https://pokeapi.co/api/v2/pokemon/" + input + "/").then(function (response) {
                 return response.json();
             }).then(function (pokemon) {
-                console.log(pokemon);
                 _this8.setState({
                     url: pokemon.sprites.front_default
                 });

@@ -187,8 +187,7 @@ class Survey extends React.Component {
     }
     fetchImage (input) {
         fetch(`https://pokeapi.co/api/v2/pokemon/${input}/`)	
-        .then(response => response.json()).then(pokemon => {	
-            console.log(pokemon);	
+        .then(response => response.json()).then(pokemon => {		
             this.setState({
                 url: pokemon.sprites.front_default
             })
