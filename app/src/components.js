@@ -94,7 +94,6 @@ class Display extends React.Component {
     componentDidUpdate(prevProps) {
         let pokemon = this.props.poke;
         if (pokemon !== prevProps.poke) {
-            alert('Results Updated!')
             pokemon = pokemon.toLowerCase();
             this.props.getUrl(pokemon);
         }
@@ -174,6 +173,7 @@ class Survey extends React.Component {
         }
         event.target.reset();
         if (user.name === '') return alert('Please enter your name!');
+        alert('Results Updated!')
         fetch('api/partners', {
             method: 'POST',
             body: JSON.stringify(user),

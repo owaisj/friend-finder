@@ -234,7 +234,6 @@ var Display = function (_React$Component4) {
         value: function componentDidUpdate(prevProps) {
             var pokemon = this.props.poke;
             if (pokemon !== prevProps.poke) {
-                alert('Results Updated!');
                 pokemon = pokemon.toLowerCase();
                 this.props.getUrl(pokemon);
             }
@@ -376,6 +375,7 @@ var Survey = function (_React$Component6) {
             };
             event.target.reset();
             if (user.name === '') return alert('Please enter your name!');
+            alert('Results Updated!');
             fetch('api/partners', {
                 method: 'POST',
                 body: JSON.stringify(user),
